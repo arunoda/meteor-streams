@@ -14,7 +14,6 @@ Meteor.Stream = function Stream(name) {
 
   self._emit = self.emit;
   self.emit = function emit() {
-    console.log('dsdsdsd');
     var args = [];
     for(var key in arguments) {
       args.push(arguments[key]);
@@ -22,12 +21,7 @@ Meteor.Stream = function Stream(name) {
     emitToSubscriptions(args, null, null);
   };
 
-  self.allow = function allow(func, cache) {
-    allowFunction = func;
-    if(cache === false) {
-      allowResultCache = false;
-    }
-  };
+  self.permissions = new Meteor.Stream.Permission(Meteor.Collection.insecure, true);
   
   function emitToSubscriptions(args, subscriptionId, author) {
     events.emit('item', {args: args, author: author, subscriptionId: subscriptionId});
@@ -45,7 +39,7 @@ Meteor.Stream = function Stream(name) {
     function onItem(item) {
       Fibers(function() {
         var id = Random.id();
-        if(allowSendingToClient(publication.userId, item.args[0])) {
+        if(self.permissions.checkPermission('read', publication.userId, item.args[0])) {
           //do not send again this to the sender
           if(subscriptionId != item.subscriptionId) {
             publication.added(streamName, id, item);
@@ -63,27 +57,61 @@ Meteor.Stream = function Stream(name) {
 
   var methods = {};
   methods[streamName] = function(subscriptionId, args) {
+    //in order to send this to the server callback
     self.userId = this.userId;
     Fibers(function() {
+      //in order to send this to the serve callback
+      self.allowed = self.permissions.checkPermission('write', self.userId, args[0]);
+      //need to send this to server always
       self._emit.apply(self, args);
-      emitToSubscriptions(args, subscriptionId, self.userId);
+      if(self.allowed) {
+        emitToSubscriptions(args, subscriptionId, self.userId);
+      }
     }).run();
   };
   Meteor.methods(methods);
-
-  function allowSendingToClient(userId, eventName) {
-    var namespace = userId + '-' + eventName;
-    var result = allowResults[namespace];
-    
-    if(result === undefined) {
-      console.log('checking....');
-      result = !allowFunction || allowFunction(userId, eventName);
-      if(allowResultCache) {
-          allowResults[namespace] = result;
-      }
-    }
-    return result;
-  }
 };
 
 util.inherits(Meteor.Stream, EventEmitter);
+
+Meteor.Stream.Permission = function (acceptAll, cacheAll) {
+
+  var options = {
+    "read": {
+      results: {}
+    }, 
+    "write": {
+      results: {}
+    }
+  };
+
+  this.read = function(func, cache) {
+    options['read']['func'] = func;
+    options['read']['doCache'] = (cache === undefined)? cacheAll: cache; 
+  };
+
+  this.write = function(func, cache) {
+    options['write']['func'] = func;
+    options['write']['doCache'] = (cache === undefined)? cacheAll: cache; 
+  };
+
+  this.checkPermission = function(type, userId, eventName) {
+    var namespace = userId + '-' + eventName;
+    var result = options[type].results[namespace];
+    
+    if(result === undefined) {
+      var func = options[type].func;
+      if(func) {
+        result = func(userId, eventName);
+        if(options[type].doCache) {
+          options[type].results[namespace] = result;
+          return result;
+        }
+      } else {
+        return acceptAll;
+      }
+    } else {
+      return result;
+    }
+  };  
+}
