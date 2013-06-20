@@ -1,3 +1,3 @@
 test: 
-	sh run_tests.sh
+	./run_tests.sh
 .PHONY: test
