@@ -15,4 +15,4 @@ do
 done
 
 cd laika
-/edu/projects/laika/bin/laika
+laika
