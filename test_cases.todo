@@ -25,6 +25,6 @@ Write Permission:
  ✔ client to Server with granted only for loggedin @done (13-06-21 16:21)
 
 Permission Caching:
- ☐ permission caching on
- ☐ permission caching on
+ ✔ permission caching on @done (13-06-21 22:29)
+ ✔ permission caching off @done (13-06-21 22:29)
 
