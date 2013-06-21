@@ -1,16 +1,5 @@
 var assert = require('assert');
-
-function createServerStream(stream) {
-  //simulate insecure
-  Meteor.Collection.insecure = true;
-  this[stream + 'Stream'] = new Meteor.Stream(stream);
-  emit('return');
-}
-
-function createClientStream(stream) {
-  this[stream + 'Stream'] = new Meteor.Stream(stream);
-  emit('return');
-}
+require('./common');
 
 suite('Basic Communication', function() {
   test('server to client', function(done, server, client) {
@@ -71,6 +60,32 @@ suite('Basic Communication', function() {
     });
 
     c1.on('evt', function(data) {
+      assert.deepEqual(data, {abc: 10012});
+      done();
+    });
+
+    c2.evalSync(function() {
+      helloStream.emit('evt', {abc: 10012});
+      emit('return');
+    });
+  });
+
+  test('client to client', function(done, server, c1, c2) {
+    server.evalSync(createServerStream, 'hello');
+    c1.evalSync(createClientStream, 'hello');
+    c2.evalSync(createClientStream, 'hello');
+
+    c2.evalSync(laika.actions.createUser, {username: 'arunoda', password: '1234556'});
+
+    c1.evalSync(function() {
+      helloStream.on('evt', function(data) {
+        emit('evt', this.author, data);
+      });
+      emit('return');
+    });
+
+    c1.on('evt', function(author, data) {
+      assert.ok(author);
       assert.deepEqual(data, {abc: 10012});
       done();
     });

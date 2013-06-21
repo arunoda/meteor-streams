@@ -15,4 +15,4 @@ do
 done
 
 cd laika
-laika
+laika $1
