@@ -30,3 +30,9 @@ Permission Caching:
  ✔ permission caching on @done (13-06-21 22:29)
  ✔ permission caching off @done (13-06-21 22:29)
 
+ Filters:
+ ☐ simple filter adding an arg
+ ☐ multiple filters
+ ☐ filter changinging an arg
+
+
