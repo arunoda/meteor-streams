@@ -1,0 +1,30 @@
+<head>
+  <title>Chat with Meteor Streams</title>
+</head>
+<body>
+  {{> mainBox}}
+</body>
+
+<template name='mainBox'>
+  <div class='container'>
+    <h2>Chat with Meteor Streams</h2>
+    {{loginButtons}}
+    {{> chatBox}}
+  </div>
+</template>
+
+<template name='chatBox'>
+  <div id='messages'>
+    {{#each messages}}
+      {{>chatMessage}}
+    {{/each}}
+  </div>
+  <textarea id='chat-message'></textarea><br>
+  <button class='btn btn-primary' id='send'>Send Chat</button>
+</template>
+
+<template name='chatMessage'>
+  <div>
+    <b>{{user}}:</b> {{message}}
+  </div>
+</template>
