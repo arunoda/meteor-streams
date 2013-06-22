@@ -95,4 +95,39 @@ suite('Basic Communication', function() {
       emit('return');
     });
   });
+
+  test('emitting not fired to itself in the client', function(done, server, client) {
+    server.evalSync(createServerStream, 'hello');
+    client.evalSync(createClientStream, 'hello');
+    var recieved = 0;
+
+    server.evalSync(function() {
+      helloStream.on('evt2', function(d1, d2) {
+        emit('evt2', d1, d2);
+      });
+      emit('return');
+    });
+
+    server.on('evt2', function(d1, d2) {
+      assert.deepEqual(d1, {abc: 1001});
+      assert.equal(d2, 200);
+      setTimeout(function() {
+        assert.equal(recieved, 0);
+        done();
+      }, 200);
+    });
+
+    client.on('evt2', function() {
+      recieved ++;
+    });
+
+    client.evalSync(function() {
+      helloStream.on('evt2', function(data) {
+        emit('evt2', data);
+      });
+      helloStream.emit('evt2', {abc: 1001}, 200);
+      emit('return');
+    });
+
+  });
 });
