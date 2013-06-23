@@ -1,6 +1,4 @@
 permalink: /:title.html
-url: "" 
+url: "http://arunoda.github.io/meteor-streams" 
 exclude:
 - README.md
-- Rakefile
-- post.sh
