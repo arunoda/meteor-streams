@@ -31,8 +31,8 @@ Permission Caching:
  ✔ permission caching off @done (13-06-21 22:29)
 
  Filters:
- ☐ simple filter adding an arg
- ☐ multiple filters
- ☐ filter changinging an arg
+ ✔ simple filter adding an arg @done (13-06-23 09:04)
+ ✔ multiple filters @done (13-06-23 09:06)
+ ✔ modifying an arg @done (13-06-23 09:08)
 
 

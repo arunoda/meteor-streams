@@ -9,7 +9,7 @@ mkdir -p $PACKAGE_PATH
 FILES=./*
 for file in $FILES
 do
-  if [[ $file != './laika' ]]; then
+  if [[ $file != './laika' ]] && [[ $file != './samples' ]]; then
     cp -rf $file $PACKAGE_PATH
   fi
 done
