@@ -1,0 +1,6 @@
+permalink: /:title.html
+url: "" 
+exclude:
+- README.md
+- Rakefile
+- post.sh

@@ -1,0 +1,161 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+body {
+	border-top: 5px solid #e0366e;
+	margin: 0px;
+	text-align: center;
+	padding: 0px 20px 0px 20px;
+}
+
+body, div, a, input, select, button, textarea {
+	font-family: 'PT Sans';
+	font-size: 16px;
+	color: #333333;
+}
+
+code {
+	font-size: 14px;
+	font-weight: bold;
+	border: 1px solid rgb(150, 150, 150);
+	padding: 1px 3px 1px 3px;
+	background-color: #fff7ff;
+	border-radius: 4px;
+}
+
+pre code {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+blockquote {
+	background-color: #fff7ff;
+	padding: 0px 10px 0px 10px;
+	margin: 0px;
+	border: 1px solid #eb597e;
+	border-left: 10px solid #eb597e;
+}
+
+a {
+	text-decoration: none;
+	color: #e0366e;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+img{
+	border: 0px;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: normal;
+}
+
+
+#dokeeno-content {
+	width: 930px;
+	margin: auto;
+	text-align: left;
+}
+
+#heading {
+	margin: 20px 0px 0px 0px;
+	position: relative;
+	height: 70px;
+	padding: 0px 0px 20px 0px;
+	border-bottom: 1px solid #cccccc;
+}
+
+#heading #logo {
+	float: left;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-size: 40px;
+}
+
+#heading #logo h1 {
+	font-size: 40px;
+	margin: 0px;
+}
+
+#heading #logo h2 {
+	font-size: 22px;
+	margin: 0px;
+	font-weight: normal;
+}
+
+#logo a {
+    font-size: 40px;
+    color: #000000;
+    text-decoration: none;
+}
+
+#heading #logo #logo_docs {
+	color: #e0366e;
+}
+
+#heading #links {
+	position: absolute;
+	top: 25px;
+	right: 0px;
+}
+
+#content {
+	
+}
+
+#footer {
+	margin: 30px 0px 0px 0px;
+	padding: 10px 0px 10px 0px;
+	border-top: 1px solid #dddddd;
+	text-align: center;
+	font-size: 13px;
+}
+
+
+#pageList {
+	width: 200px;
+	float: left;
+	margin-top: 65px;
+	padding: 0px 20px 0px 0px;
+}
+
+#pageList ul {
+	list-style-type: none;
+	padding: 0px ;
+}
+
+#pageList ul li {
+	padding: 3px 0px 3px 5px;
+}
+
+#pageList ul li:hover {
+	background-color: #d7eef4;
+	color: white;
+}
+
+#pageList ul li a {
+	color: #333;
+}
+
+#pageList ul li a:hover {
+	text-decoration: none;
+}
+
+#pageList .selected {
+
+	border-left: 7px solid #e0366e;
+	padding-left: 5px;
+}
+
+#page-title {
+	color: #e0366e;
+}
+
+#page {
+	width: 700px;
+	float: left;
+}
