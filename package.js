@@ -3,6 +3,6 @@ Package.describe({
 });
 
 Package.on_use(function (api, where) {
-  api.add_files(['lib/server.js'], 'server');
-  api.add_files(['lib/event_emitter.js', '/lib/client.js'], 'client');
+  api.add_files(['lib/ev.js', 'lib/server.js'], 'server');
+  api.add_files(['lib/ev.js', '/lib/client.js'], 'client');
 });

@@ -42,6 +42,15 @@ onDisconnect Handlers:
  ✔ 2 clients, first one uses onDisconnect handler @done (13-06-24 14:09)
  ✔ 2 clients use 2 different onDisconnect handlers @done (13-06-24 14:11)
 
+EV:
+ ✔ on and emit @done (13-06-24 14:59)
+ ✔ remove listener @done (13-06-24 14:59)
+ ✔ remove all listeners @done (13-06-24 15:02)
+ ✔ once and emit @done (13-06-24 15:04)
+ ☐ emit with different contexts
+
+
+
 
 
 
