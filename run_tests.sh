@@ -1,18 +1,13 @@
 #!/bin/bash
-PACKAGE_NAME=stream
+PACKAGE_NAME=streams
 PACKAGE_PATH=laika/packages/$PACKAGE_NAME
 
 #move and setup packages
 rm -rf $PACKAGE_PATH
 mkdir -p $PACKAGE_PATH
 
-FILES=./*
-for file in $FILES
-do
-  if [[ $file != './laika' ]] && [[ $file != './samples' ]]; then
-    cp -rf $file $PACKAGE_PATH
-  fi
-done
+cp -rf ./lib $PACKAGE_PATH
+cp -rf ./package.js $PACKAGE_PATH
 
 cd laika
 laika $1
