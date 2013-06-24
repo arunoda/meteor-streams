@@ -4,15 +4,15 @@ title: Communication Patterns
 visible: true
 ---
 
-With permissions, meteor streams can be configured to behave in several ways (AKA: Communication Patterns). Lets discover few common patterns.
+With permissions, meteor streams can be configured to behave in several ways (AKA: Communication Patterns). Let's discover few common patterns.
 
 > Lets assume `insecure` package has been removed
 
 ## Global Communication Channel
 
-With this setup you can communication between browser clients back and forth. Clients can send events and listen on them. Additionally with permissions you can customize who can write and read from the stream.
+With this setup,  you can communication between browser clients back and forth. Clients can send events and listen on them. Additionally with permissions you can customize who can write and read from the stream.
 
-add following content to `global.js`
+Add following content to `global.js`
 
     stream = new Meteor.Stream('c2c');
 
@@ -32,9 +32,9 @@ add following content to `global.js`
 
 ## Streaming Public Page
 
-With this setup we can send a stream of messages to each connected clients. You can create streaming content page like **Twitter Home** with this.
+With this setup, we can send a stream of messages to each connected clients. You can create streaming content page like **Twitter Home** with this.
 
-add following content to `streaming.js`
+Add following content to `streaming.js`
 
     stream = new Meteor.Stream('public');
 
@@ -60,9 +60,9 @@ add following content to `streaming.js`
 
 ## Streaming Private Page
 
-add following content to `private.js`
+Add following content to `private.js`
 
-With this setup we can create a private streaming page for logged in users. This is something like **Twitter Connect** page. Each user has different content.
+With this setup, we can create a private streaming page for logged in users. This is something like **Twitter Connect** page. Each user has different content.
 
     stream = new Meteor.Stream('private');
 
