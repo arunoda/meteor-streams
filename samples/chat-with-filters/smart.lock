@@ -7,8 +7,8 @@
     "packages": {
       "streams": {
         "git": "https://github.com/arunoda/meteor-streams.git",
-        "tag": "v0.1.1",
-        "commit": "6dee3d8743393491e03f45b1e90662ef0f8cd307"
+        "tag": "v0.1.5",
+        "commit": "170c451146a61e42215f44f3f3a78379c5af034c"
       }
     }
   }
