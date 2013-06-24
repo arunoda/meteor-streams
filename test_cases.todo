@@ -30,9 +30,19 @@ Permission Caching:
  ✔ permission caching on @done (13-06-21 22:29)
  ✔ permission caching off @done (13-06-21 22:29)
 
- Filters:
+Filters:
  ✔ simple filter adding an arg @done (13-06-23 09:04)
  ✔ multiple filters @done (13-06-23 09:06)
  ✔ modifying an arg @done (13-06-23 09:08)
+
+onDisconnect Handlers:
+ ✔ single onDisconnect handler @done (13-06-24 14:01)
+ ✔ multiple onDisconnect handler @done (13-06-24 14:03)
+ ✔ without any onDisconnect handler @done (13-06-24 14:04)
+ ✔ 2 clients, first one uses onDisconnect handler @done (13-06-24 14:09)
+ ✔ 2 clients use 2 different onDisconnect handlers @done (13-06-24 14:11)
+
+
+
 
 
