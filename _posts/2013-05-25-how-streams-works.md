@@ -7,7 +7,7 @@ When we fire an event on the client, let's see what's actually happening behind 
 
 ![How Meteor Streams Works](http://i.imgur.com/MX0yZVG.png)
 
-* Once a client `emit` an event first it will reach the checkpoint no 1.
+* Once a client `emit` an event first it will reach the [checkpoint](security.html) no 1.
 * It will make sure this event and the client can proceed
 * After event pass through the checkpoint it will go through a set of filters
 * Filters can add/modify and delete the content of the event

@@ -32,7 +32,7 @@ add following content to `global.js`
 
 ## Streaming Public Page
 
-With this setup we can send a stream of messages to clients. You can create streaming content page like **Twitter Home** with this.
+With this setup we can send a stream of messages to each connected clients. You can create streaming content page like **Twitter Home** with this.
 
 add following content to `streaming.js`
 
@@ -60,7 +60,9 @@ add following content to `streaming.js`
 
 ## Streaming Private Page
 
-With this setup we can create a private streaming page for logged in users. This is something like **Twitter Connect** page
+add following content to `private.js`
+
+With this setup we can create a private streaming page for logged in users. This is something like **Twitter Connect** page. Each user has different content.
 
     stream = new Meteor.Stream('private');
 

@@ -4,9 +4,9 @@ title: Introduction
 visible: true
 ---
 
-When we are talking about meteor and realtime, mongodb comes to the scene by default. It is really good model and works really well. But do we really need mongodb for all our realtime communications? Obviously, answer should be NO.
+When we are talking about meteor and realtime, mongodb comes to the scene by default. It's a really good model and works really well. But do we really need mongodb for all our realtime communications? Obviously, answer should be NO.
 
-But with meteor, we tend to design our app with mongodb since it is the only way. Mongodb is good, and we need it, but what we really need is a hybrid approach. For some of our realtime communications we can use mongo, for some we'll do it without mongo. But how?
+But with meteor, we tend to design our apps with mongodb since it is the only way. Mongodb is good, and we need it, but what we really need is a hybrid approach. For some of our realtime communications we can use mongo, for some we'll do it without mongo. But how?
 
 ## Introducing Meteor Streams
 
