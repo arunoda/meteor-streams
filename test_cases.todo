@@ -34,6 +34,7 @@ Filters:
  ✔ simple filter adding an arg @done (13-06-23 09:04)
  ✔ multiple filters @done (13-06-23 09:06)
  ✔ modifying an arg @done (13-06-23 09:08)
+ ☐ filters with userId and subscriptionId
 
 onDisconnect Handlers:
  ✔ single onDisconnect handler @done (13-06-24 14:01)
@@ -47,7 +48,7 @@ EV:
  ✔ remove listener @done (13-06-24 14:59)
  ✔ remove all listeners @done (13-06-24 15:02)
  ✔ once and emit @done (13-06-24 15:04)
- ☐ emit with different contexts
+ ✔ emit with different contexts @done (13-06-24 16:06)
 
 
 

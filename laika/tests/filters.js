@@ -101,4 +101,34 @@ suite('Filters', function() {
       emit('return');
     });
   });
+
+  test('userId and subscriptionId', function(done, server, c1) {
+    var userId = c1.evalSync(function() {
+      Accounts.createUser({username: 'arunoda', password: '11234343'}, function(err) {
+        emit('return', Meteor.userId());
+      });
+    });
+
+    server.evalSync(createServerStream, 'hello');
+    c1.evalSync(createClientStream, 'hello');
+
+    server.evalSync(function() {
+      helloStream.addFilter(function(eventName, args) {
+        emit('filter', this.userId, this.subscriptionId);
+        return args;
+      });
+      emit('return');
+    });
+
+    server.on('filter', function(_userId, _subscriptionId) {
+      assert.equal(_userId, userId);
+      assert.ok(_subscriptionId);
+      done();
+    });
+
+    c1.evalSync(function() {
+      helloStream.emit('evt', {aa: 10});
+      emit('return');
+    });
+  });
 }); 
