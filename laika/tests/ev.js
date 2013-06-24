@@ -20,6 +20,10 @@ suite('EV', function() {
   test('removeListener', function(done) {
     var ev = new EV();
     var cnt = 0;
+    var cnt2 = 0;
+    ev.on('evt', function() {
+      cnt2++;
+    });
     ev.on('evt', evtCallback);
     function evtCallback(v1, v2) {
       cnt ++;
@@ -31,6 +35,7 @@ suite('EV', function() {
     ev.emit('evt', 10, 20);
     
     assert.equal(cnt, 1);
+    assert.equal(cnt2, 2);
     done();
   });
 
@@ -57,9 +62,16 @@ suite('EV', function() {
   test('once and emit', function(done) {
     var ev = new EV();
     var cnt = 0;
+    var cnt2 = 0;
 
     ev.once('evt', function(v1, v2) {
       cnt++;
+      assert.equal(v1, 10);
+      assert.equal(v2, 20);
+    });
+
+    ev.once('evt', function(v1, v2) {
+      cnt2++;
       assert.equal(v1, 10);
       assert.equal(v2, 20);
     });
@@ -68,6 +80,7 @@ suite('EV', function() {
     ev.emit('evt', 10, 20);
 
     assert.equal(cnt, 1);
+    assert.equal(cnt2, 1);
     done();
   });
 
