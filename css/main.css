@@ -48,6 +48,10 @@ img{
 	border: 0px;
 }
 
+#content img {
+	width: 95%;
+}
+
 h1 {
 	font-size: 30px;
 	font-weight: normal;
