@@ -97,4 +97,4 @@ With this setup, we can create a private streaming page for logged in users. Thi
       });
     }
 
-> These are just a few patterns possible with Meteor Streams. If you have some interesting pattern. Don't forget to add this page.
+> These are just a few patterns possible with Meteor Streams. If you have some interesting patterns. Don't forget to add them to [this page](https://github.com/arunoda/meteor-streams/blob/gh-pages/_posts/2013-03-28-communication-patterns.md).
