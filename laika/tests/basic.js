@@ -79,13 +79,13 @@ suite('Basic Communication', function() {
 
     c1.evalSync(function() {
       helloStream.on('evt', function(data) {
-        emit('evt', this.author, data);
+        emit('evt', this.userId, data);
       });
       emit('return');
     });
 
-    c1.on('evt', function(author, data) {
-      assert.ok(author);
+    c1.on('evt', function(userId, data) {
+      assert.ok(userId);
       assert.deepEqual(data, {abc: 10012});
       done();
     });
