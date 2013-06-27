@@ -1,0 +1,21 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "streams": {},
+      "cluster": {}
+    },
+    "packages": {
+      "streams": {
+        "git": "https://github.com/arunoda/meteor-streams.git",
+        "tag": "v0.1.8",
+        "commit": "f3c792e0e84b21691818645c8b7acb4ef0c607ab"
+      },
+      "cluster": {
+        "git": "https://github.com/arunoda/meteor-cluster.git",
+        "tag": "v0.1.6",
+        "commit": "74e5b017c2c1eea7bf02eae6a4f3dd6b9556b3be"
+      }
+    }
+  }
+}

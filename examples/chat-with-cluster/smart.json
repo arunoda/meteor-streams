@@ -1,0 +1,6 @@
+{
+  "packages": {
+    "streams": {},
+    "cluster": {}
+  }
+}
