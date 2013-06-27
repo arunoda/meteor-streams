@@ -10,4 +10,4 @@ cp -rf ./lib $PACKAGE_PATH
 cp -rf ./package.js $PACKAGE_PATH
 
 cd laika
-laika $1
+laika $1 || laika $1
