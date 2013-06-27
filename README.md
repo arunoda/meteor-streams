@@ -1,5 +1,5 @@
-Meteor Streams
-=====
+# Meteor Streams [![Build Status](https://travis-ci.org/arunoda/meteor-streams.png?branch=master)](https://travis-ci.org/arunoda/meteor-streams)
+
 ### DB less realtime communication for meteor
 
 ## [Documentation](http://arunoda.github.io/meteor-streams/)
