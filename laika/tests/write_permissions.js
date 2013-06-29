@@ -7,7 +7,7 @@ suite('Write Permissions', function() {
     client.evalSync(createClientStream, 'hello');
 
     server.evalSync(function() {
-      helloStream.permissions.write(function(userId, evt) {
+      helloStream.permissions.write(function(evt) {
         return true;
       });
       helloStream.on('evt', function(data) {
@@ -37,8 +37,8 @@ suite('Write Permissions', function() {
     c1.evalSync(laika.actions.createUser, {username: 'arunoda', password: 'maxapower'});
 
     server.evalSync(function() {
-      helloStream.permissions.write(function(userId, evt) {
-        return !!userId;
+      helloStream.permissions.write(function(evt) {
+        return !!this.userId;
       });
       helloStream.on('evt', function(data) {
         emit('evt', this.userId, this.allowed, data);
@@ -77,7 +77,7 @@ suite('Write Permissions', function() {
     client.evalSync(createClientStream, 'hello');
 
     server.evalSync(function() {
-      helloStream.permissions.write(function(userId, evt) {
+      helloStream.permissions.write(function(evt) {
         return false;
       });
       helloStream.on('evt', function(data) {
@@ -153,7 +153,7 @@ suite('Write Permissions', function() {
     c2.evalSync(createClientStream, 'hello');
 
     server.evalSync(function() {
-      helloStream.permissions.write(function(userId, evt) {
+      helloStream.permissions.write(function(evt) {
         return true;
       });
       emit('return');
@@ -186,7 +186,7 @@ suite('Write Permissions', function() {
     var received = 0;
 
     server.evalSync(function() {
-      helloStream.permissions.write(function(userId, evt) {
+      helloStream.permissions.write(function(evt) {
         return false;
       });
       emit('return');

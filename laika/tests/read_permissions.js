@@ -7,7 +7,7 @@ suite('Read Permissions', function() {
     client.evalSync(createClientStream, 'hello');
 
     server.evalSync(function() {
-      helloStream.permissions.read(function(userId, eventName) {
+      helloStream.permissions.read(function(eventName) {
         return true;
       });
       emit('return');
@@ -39,7 +39,7 @@ suite('Read Permissions', function() {
     var received = 0;
 
     server.evalSync(function() {
-      helloStream.permissions.read(function(userId, eventName) {
+      helloStream.permissions.read(function(eventName) {
         return false;
       });
       emit('return');
@@ -124,8 +124,8 @@ suite('Read Permissions', function() {
     client.evalSync(createClientStream, 'hello');
 
     server.evalSync(function() {
-      helloStream.permissions.read(function(userId, eventName) {
-        return !!userId;
+      helloStream.permissions.read(function(eventName) {
+        return !!this.userId;
       });
       emit('return');
     });
