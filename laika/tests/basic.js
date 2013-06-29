@@ -130,4 +130,27 @@ suite('Basic Communication', function() {
     });
 
   });
+
+  test('client to server: pending events support', function(done, server, client) {
+    server.evalSync(createServerStream, 'hello');
+
+    server.evalSync(function() {
+      helloStream.on('evt2', function(d1, d2) {
+        emit('evt2', d1, d2);
+      });
+      emit('return');
+    });
+
+    server.on('evt2', function(d1, d2) {
+      assert.deepEqual(d1, {abc: 1001});
+      assert.equal(d2, 200);
+      done();
+    });
+
+    client.evalSync(function() {
+      var stream = new Meteor.Stream('hello');
+      stream.emit('evt2', {abc: 1001}, 200);
+      emit('return');
+    });
+  });
 });
