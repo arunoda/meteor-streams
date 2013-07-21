@@ -21,11 +21,11 @@ Add following content to `global.js`
     }
 
     if(Meteor.isServer) {
-      stream.permissions.write(function(userId, eventName) {
+      stream.permissions.write(function(eventName) {
         return true;
       });
 
-      stream.permissions.read(function(userId, eventName) {
+      stream.permissions.read(function(eventName) {
         return true;
       });
     }
@@ -45,11 +45,11 @@ Add following content to `streaming.js`
     }
 
     if(Meteor.isServer) {
-      stream.permissions.write(function(userId, eventName) {
+      stream.permissions.write(function(eventName) {
         return false;
       });
 
-      stream.permissions.read(function(userId, eventName) {
+      stream.permissions.read(function(eventName) {
         return true;
       });
 
@@ -77,12 +77,12 @@ With this setup, we can create a private streaming page for logged in users. Thi
     }
 
     if(Meteor.isServer) {
-      stream.permissions.write(function(userId, eventName) {
-        return eventName == 'private-page' && userId;
+      stream.permissions.write(function(eventName) {
+        return eventName == 'private-page' && this.userId;
       });
 
-      stream.permissions.read(function(userId, eventName) {
-        return userId == eventName;
+      stream.permissions.read(function(eventName) {
+        return this.userId == eventName;
       });
 
       stream.on('private-page', function() {
