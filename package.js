@@ -4,5 +4,5 @@ Package.describe({
 
 Package.on_use(function (api, where) {
   api.add_files(['lib/ev.js', 'lib/server.js', 'lib/stream_permission.js'], 'server');
-  api.add_files(['lib/ev.js', '/lib/client.js'], 'client');
+  api.add_files(['lib/ev.js', 'lib/client.js'], 'client');
 });
