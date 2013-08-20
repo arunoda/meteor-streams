@@ -7,3 +7,5 @@ preserve-inputs
 bootstrap
 accounts-password
 accounts-ui
+standard-app-packages
+streams
