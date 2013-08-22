@@ -61,4 +61,56 @@ suite('Permission Caching', function() {
     }, 200);
 
   });
+
+  test('caching off and args - write', function(done, server, client) {
+    server.evalSync(createServerStream, 'hello');
+    client.evalSync(createClientStream, 'hello');
+
+    server.evalSync(function() {
+      helloStream.permissions.write(function(e, v1, v2) {
+        emit('write', e, v1, v2);
+        return true;
+      }, false);
+      emit('return');
+    });
+
+    server.on('write', function(eventName, val1, val2) {
+      assert.equal(eventName, 'aa');
+      assert.equal(val1, 10);
+      assert.equal(val2, 20);
+      done();
+    });
+
+    client.evalSync(function() {
+      helloStream.emit('aa', 10, 20);
+      emit('return');
+    });
+
+  });
+
+  test('caching off and args - read', function(done, server, client) {
+    server.evalSync(createServerStream, 'hello');
+    client.evalSync(createClientStream, 'hello');
+
+    server.evalSync(function() {
+      helloStream.permissions.read(function(e, v1, v2) {
+        emit('read', e, v1, v2);
+        return true;
+      }, false);
+      emit('return');
+    });
+
+    server.on('read', function(eventName, val1, val2) {
+      assert.equal(eventName, 'aa');
+      assert.equal(val1, 10);
+      assert.equal(val2, 20);
+      done();
+    });
+
+    server.evalSync(function() {
+      helloStream.emit('aa', 10, 20);
+      emit('return');
+    });
+
+  });
 });
