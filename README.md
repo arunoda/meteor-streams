@@ -1,6 +1,9 @@
 # Meteor Streams [![Build Status](https://travis-ci.org/arunoda/meteor-streams.png?branch=master)](https://travis-ci.org/arunoda/meteor-streams)
 
-### DB less realtime communication for meteor
+DB less realtime communication for meteor
+
+## Development Status
+Project development status is [inactive](https://github.com/arunoda/meteor-streams/issues/21#issuecomment-59030380).
 
 ## [Documentation](http://arunoda.github.io/meteor-streams/)
 
